@@ -50,8 +50,25 @@ class Clustering:
         return cluster_list
 
     def list_cluster(self, cluster_dict_, labels_next, labels_past):
+        """
+        TODO: was machen bei ungleich?
+        :param cluster_dict_: dict of all cluster with labels
+        :param labels_next: actuall labels
+        :param labels_past: older labels
+        :return: list of cluster mean markov-chains
+        """
         cluster_list = []
-        if labels_next in labels_past:
+        if np.unique(labels_next) in labels_past:
+            for cluster_index, value in enumerate(np.unique(labels_next)):
+                tmp = []
+                for item in cluster_dict_:
+                    for k, v in item.items():
+                        if k == cluster_index:
+                            tmp.append(v.tolist())
+                cluster_list.append(np.mean(tmp, axis=0))
+        else:
+            print('Unequally Number of cluster labels. Actual cluster {actualcluster} old cluster {oldcluster}'.format(
+                actualcluster=np.unique(labels_next), oldcluster=labels_past))
             for cluster_index, value in enumerate(np.unique(labels_next)):
                 tmp = []
                 for item in cluster_dict_:
@@ -61,3 +78,22 @@ class Clustering:
                 cluster_list.append(np.mean(tmp, axis=0))
 
         return cluster_list
+
+    def first_cluster(self, cluster_dict_, labels_next):
+        result = {}
+        cluster_list = []
+
+        for cluster_index, value in enumerate(np.unique(labels_next)):
+            print(cluster_index, value)
+            tmp = []
+            for item in cluster_dict_:
+                for k, v in item.items():
+                    if k == value:
+                        tmp.append(v.tolist())
+            cluster_list.append(np.mean(tmp, axis=0))
+
+        for index, value in enumerate(cluster_list):
+            for value1 in np.unique(labels_next):
+                result[str(value1)] = value
+
+        return result
