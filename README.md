@@ -1,4 +1,5 @@
 # Clustinator
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3966829.svg)](https://doi.org/10.5281/zenodo.3966829)
 
 Clustinator is an incremental clustering service for [ContinuITy](https://github.com/ContinuITy-Project/ContinuITy), which is the open-source implementation of a research project on “Automated Performance Testing in Continuous Software Engineering”, launched by [Novatec Consulting GmbH](https://www.novatec-gmbh.de/) and the [University of Stuttgart](https://www.uni-stuttgart.de/) ([Reliable Software Systems Group](https://www.iste.uni-stuttgart.de/rss/)). ContinuITy started in September 2017 with a duration of 2.5 years. It is funded by the [German Federal Ministry of Education and Research (BMBF)](https://www.bmbf.de/). For details about the research project, please refer to our [Web site](https://continuity-project.github.io/).
 
